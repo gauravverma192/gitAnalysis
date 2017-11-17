@@ -11,6 +11,14 @@ const Actions = {
             })
     },
 
+    getDocumentScrollValues() {
+      var el = {};
+      el.scrollHeight = Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+      el.scrollTop = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
+      el.clientHeight = Math.max(document.body.clientHeight,document.documentElement.clientHeight);
+      return el;
+    },
+
     sortArrayWithSecondValue(data) {
         console.log("sort incom : ", data);
         var keys = [], value = [];

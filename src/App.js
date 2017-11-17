@@ -25,6 +25,18 @@ class App extends Component {
     this.setState({ searchKeyword: this.refs.searchKeyword.value });
   }
 
+  checkEnter(e) {
+    var keynum;
+    if(window.event) {                    
+      keynum = e.keyCode;
+    } 
+    if(e.which){                    
+      keynum = Math.max(keynum,e.which);
+    }
+    if(keynum == 13) {
+      this.setSearch();
+    }
+  }
   setSearch() {
     this.setState({ toSearch: this.refs.searchKeyword.value }, function () {
       this.setState({ pageNumber: 1 }, function () {
@@ -162,7 +174,8 @@ class App extends Component {
       if (this.state.noContent) {
         return;
       }
-      if (document.documentElement.scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+      var scrollValues = Actions.getDocumentScrollValues();
+      if (scrollValues.scrollTop + scrollValues.clientHeight >= scrollValues.scrollHeight) {
         var nextPageNumber = this.state.pageNumber + 1;
         this.setState({ pageNumber: nextPageNumber }, function () {
           this.setState({ isAppend : true}, function() {
@@ -178,7 +191,7 @@ class App extends Component {
         <div class="app">
           <div class="header">
             <div class="search-bar">
-              <input type="text" ref="searchKeyword" value={this.state.searchKeyword} onChange={this.searchKeywordChange.bind(this)} placeholder="Search" class="search-input" />
+              <input type="text" ref="searchKeyword" value={this.state.searchKeyword} onChange={this.searchKeywordChange.bind(this)} onKeyPress={this.checkEnter.bind(this)} placeholder="Search" class="search-input" />
               <div class="search-icon-wrapper" onClick={this.setSearch.bind(this)} >
                 <img class="search-icon" src="http://www.freeiconspng.com/uploads/search-icon-png-21.png" />
               </div>
