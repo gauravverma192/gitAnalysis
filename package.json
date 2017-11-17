@@ -1,0 +1,18 @@
+{
+  "name": "deloz",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-bar-chart": "^0.1.2",
+    "react-dom": "^16.1.1",
+    "react-easy-chart": "^0.3.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

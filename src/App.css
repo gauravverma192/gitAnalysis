@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+input:focus {
+  outline: none;
+}
+.app-wrapper , .app {
+   margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.header {
+  background-color: #0659de;
+  width: 100%;
+  height: 60px;
+}
+
+.search-bar {
+    width: 320px;
+    height: 34px;
+    left: 121px;
+    position: absolute;
+    top: 9px;
+    /* border-radius: 3px; */
+}
+
+.search-input {
+      width: 230px;
+    position: relative;
+    height: 100%;
+    font-size: 17px;
+    padding-left: 6px;
+    padding-right: 34px;
+}
+
+
+.search-icon-wrapper {
+  display: inline-block;
+    height: 38px;
+    left: -37px;
+    position: relative;
+    top: 2px;
+    background-color: white;
+    width: 37px;
+    border-radius: 3px;
+
+}
+
+.search-icon {
+  height: 27px;
+    position: relative;
+    top: 5px;
+    left: 3px;
+}
+
+.sort-bar {
+    width: 320px;
+    height: 42px;
+    /* left: 121px; */
+    display: inline-block;
+    float: right;
+    right: 96px;
+    position: absolute;
+    top: 9px;
+    /* border-radius: 3px; */
+}
+
+.sort-input {
+  width: 213px;
+    position: relative;
+    height: 100%;
+    font-size: 17px;
+    padding-left: 6px;
+    background-color: white;
+}
+
+.sort-icon-wrapper {
+  display: inline-block;
+    height: 40px;
+    left: -2px;
+    position: relative;
+    top: 1px;
+    background-color: white;
+    width: 37px;
+    border-radius: 3px;
+
+}
+
+.sort-icon {
+  height: 27px;
+    position: relative;
+    top: 5px;
+    left: 3px;
+}
+
+.content {
+  font-size: 24px;
+  padding: 32px;
+}
+
+.content-body {
+      padding: 30px;
+    padding-left: 145px;
+    padding-right: 145px;
+}
+
+.content-body > div {
+  padding: 10px;
+}
+
+.card-wrapper {
+  padding: 10px;
+    clear: both;
+    overflow: hidden;
+    position: relative;
+}
+
+.card {
+  background-color: whitesmoke;
+    padding: 32px;
+}
+
+.card-name {
+  font-weight: bold;
+}
+
+.card-description {
+  padding: 15px;
+    font-size: 14px;
+}
+
+.card-language {
+    position: relative;
+    width: 91px;
+    text-align: center;
+    background-color: #05a1f2;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 3px;
+    display: inline-block;
+}
+
+.card-stars {
+  float: right;
+}
+
+.card-details {
+  width: 60%;
+    float: left;
+}
+
+.card-avatar {
+  width: 40%;
+    float: left;
+}
+  .card-avatar img
+  {
+    max-width: 100%;
+    max-height: 150px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .search-status {
+        left: 200px;
+    position: absolute;
+  }
+
+  .star-icon-wrapper img {
+    width : 25px;
+  }
+
+  .star-icon-wrapper {
+    float: left;
+  }
+
+  .star-value-wrapper {
+    float : left;
+    position: relative;
+    left: 3px;
+  }
+
+  .heading {
+    font-size: 34px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    color: whitesmoke;
+    margin: auto;
+    width: 25%;
+  }
+
+  .bar-chart-wrapper {
+    height: 300px;
+    width: 800px;
+  }
+
+  .bar-chart {
+    height: 100%;
+    width: 100%;
+    border: 1px solid blue;
+  }
+
+  .display-none {
+    display: none;
+  }
+
+  .display-block {
+    display: block;
+  }
+  
