@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   checkEnter(e) {
-    var keynum;
+    var keynum= -1;
     if(window.event) {                    
       keynum = e.keyCode;
     } 
