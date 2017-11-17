@@ -26,21 +26,21 @@ class App extends Component {
   }
 
   checkEnter(e) {
-    var keynum= -1;
-    if(window.event) {                    
+    var keynum = -1;
+    if (window.event) {
       keynum = e.keyCode;
-    } 
-    if(e.which){                    
-      keynum = Math.max(keynum,e.which);
     }
-    if(keynum == 13) {
+    if (e.which) {
+      keynum = Math.max(keynum, e.which);
+    }
+    if (keynum == 13) {
       this.setSearch();
     }
   }
   setSearch() {
     this.setState({ toSearch: this.refs.searchKeyword.value }, function () {
       this.setState({ pageNumber: 1 }, function () {
-        this.setState({ isAppend : false }, function() {
+        this.setState({ isAppend: false }, function () {
           this.searchRepo();
         });
       });
@@ -52,54 +52,54 @@ class App extends Component {
     if (this.state.isAppend) {
       createdComponent = this.state.cardComponent;
     }
-    
+
     for (var i = 0; i < data.length; i++) {
       var element = <Card name={data[i].name} description={data[i].description} language={data[i].language} stars={data[i].stars} avatar={data[i].avatar} />;
       createdComponent.push(element);
     }
-      this.setState({ cardComponent: createdComponent });
-    
+    this.setState({ cardComponent: createdComponent });
+
   }
 
   buildBarChart(chartLanguage) {
-    console.log("chartLang : ",chartLanguage);
+    console.log("chartLang : ", chartLanguage);
     var tempLanguageData = [];
-     if (this.state.isAppend) {
-    tempLanguageData = this.state.languageData;
-    for(var language in tempLanguageData) {
-      if(chartLanguage[language]) {
-        chartLanguage[language] += tempLanguageData[language];
-      }
-      else {
-        chartLanguage[language] = 1;
+    if (this.state.isAppend) {
+      tempLanguageData = this.state.languageData;
+      for (var language in tempLanguageData) {
+        if (chartLanguage[language]) {
+          chartLanguage[language] += tempLanguageData[language];
+        }
+        else {
+          chartLanguage[language] = 1;
+        }
       }
     }
-     }
-    console.log("mainnn chartlang : ",chartLanguage);
-    console.log("mainnn langdata : ",this.state.languageData);
-    this.setState({ languageData : chartLanguage});
+    console.log("mainnn chartlang : ", chartLanguage);
+    console.log("mainnn langdata : ", this.state.languageData);
+    this.setState({ languageData: chartLanguage });
     var tempChartLanguage = [];
-    for(var keys in chartLanguage) {
+    for (var keys in chartLanguage) {
       var temp = {};
       temp[keys] = chartLanguage[keys];
-     tempChartLanguage.push(temp);
+      tempChartLanguage.push(temp);
     }
-    console.log("tempChartLang : ",tempChartLanguage);
+    console.log("tempChartLang : ", tempChartLanguage);
     var createdChartData = [];
-    console.log("createdchartdata : ",createdChartData);
+    console.log("createdchartdata : ", createdChartData);
     createdChartData.push(tempChartLanguage);
-    createdChartData=createdChartData[0];
+    createdChartData = createdChartData[0];
     var sortedChartData = Actions.sortArrayWithSecondValue(createdChartData);
-    console.log("sorteddata : ",sortedChartData);
-    var limit = Math.min(sortedChartData.length,6);
+    console.log("sorteddata : ", sortedChartData);
+    var limit = Math.min(sortedChartData.length, 6);
     var displayData = [];
-    for(var i=1;i<limit;i++) {
-        displayData.push(sortedChartData[i]);
+    for (var i = 1; i < limit; i++) {
+      displayData.push(sortedChartData[i]);
     }
-       console.log(displayData);
+    console.log(displayData);
 
-    this.setState({barChartData : displayData});
-    
+    this.setState({ barChartData: displayData });
+
   }
   successCB(response) {
     //console.log(response);
@@ -127,7 +127,7 @@ class App extends Component {
       tempData.avatar = items[i].owner.avatar_url;
       data.push(tempData);
       //For Bar Chart
-      if(chartLanguage[tempData.language]) {
+      if (chartLanguage[tempData.language]) {
         chartLanguage[tempData.language]++;
       }
       else {
@@ -146,7 +146,7 @@ class App extends Component {
     var words = sent.split(" ");
     var searchUrl = "https://api.github.com/search/repositories?q=";
     for (var i = 0; i < words.length; i++) {
-      if(i!=0) {
+      if (i != 0) {
         searchUrl += "+";
       }
       searchUrl += words[i];
@@ -161,13 +161,13 @@ class App extends Component {
   sortValueChange() {
     this.setState({ sortValue: this.refs.sortValue.value }, function () {
       this.setState({ pageNumber: 1 }, function () {
-        this.setState({ isAppend : false }, function() {
+        this.setState({ isAppend: false }, function () {
           this.searchRepo();
         });
       });
     });
   }
-  
+
 
   componentWillMount() {
     document.body.onscroll = function () {
@@ -175,10 +175,10 @@ class App extends Component {
         return;
       }
       var scrollValues = Actions.getDocumentScrollValues();
-      if (scrollValues.scrollTop + scrollValues.clientHeight >= scrollValues.scrollHeight) {
+      if (scrollValues.windowBottom >= scrollValues.docHeight) {
         var nextPageNumber = this.state.pageNumber + 1;
         this.setState({ pageNumber: nextPageNumber }, function () {
-          this.setState({ isAppend : true}, function() {
+          this.setState({ isAppend: true }, function () {
             this.searchRepo();
           });
         });
@@ -218,9 +218,9 @@ class App extends Component {
               {this.state.searchText}
             </div>
             <div class="content-body">
-              <div id="barchart" className={"content-body-bar-chart display-"+ (this.state.noContent? "none" : "block")}>
-                    <Chart chartData = {this.state.barChartData} />
-                </div>
+              <div id="barchart" className={"content-body-bar-chart display-" + (this.state.noContent ? "none" : "block")}>
+                <Chart chartData={this.state.barChartData} />
+              </div>
               <div class="content-body-cards">
                 {this.state.cardComponent}
               </div>

@@ -30,14 +30,14 @@ class Card extends Component {
                                 <img src="https://vignette2.wikia.nocookie.net/fantendo/images/4/45/Battle_Star.png/revision/latest?cb=20120818191010" />
                             </div>
                             <div class="star-value-wrapper">
-                            {this.props.stars}
+                                {this.props.stars}
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="card-avatar">
-                    <img src={this.props.avatar}/>
+                    <img src={this.props.avatar} />
                 </div>
             </div>
         );

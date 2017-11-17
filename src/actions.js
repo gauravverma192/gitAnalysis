@@ -6,32 +6,36 @@ const Actions = {
             .then(function (response) {
                 callback(response);
             })
-            .catch( function(error) {
-                
+            .catch(function (error) {
+
             })
     },
 
     getDocumentScrollValues() {
-      var el = {};
-      el.scrollHeight = Math.max(window.innerHeight,document.documentElement.scrollHeight);
-      el.scrollTop = Math.max(document.body.scrollTop,document.documentElement.scrollTop);
-      el.clientHeight = Math.max(document.body.clientHeight,document.documentElement.clientHeight);
-      return el;
+        var el = {};
+        var windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+        var body = document.body;
+        var html = document.documentElement;
+        var docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        var windowBottom = windowHeight + window.pageYOffset;
+        el.windowBottom = windowBottom;
+        el.docHeight = docHeight;
+        return el;
     },
 
     sortArrayWithSecondValue(data) {
         console.log("sort incom : ", data);
         var keys = [], value = [];
         for (var key in data) {
-                for(var i in data[key]) {
-                    keys.push(i);
-                    value.push(data[key][i]);
-                }
+            for (var i in data[key]) {
+                keys.push(i);
+                value.push(data[key][i]);
             }
+        }
         console.log("sort keys : ", keys);
         console.log("sort value : ", value);
         var sortedData = this.bubbleSort(keys, value);
-        return sortedData; 
+        return sortedData;
     },
 
     bubbleSort(key, items) {
@@ -57,7 +61,7 @@ const Actions = {
         console.log("after sort values : ", items);
         var returnData = [{}];
         for (var i = 0; i < items.length; i++) {
-            var temp = {'text' : key[i], 'value' : items[i]};
+            var temp = { 'text': key[i], 'value': items[i] };
             returnData.push(temp);
         }
         console.log("return data : ", returnData);
