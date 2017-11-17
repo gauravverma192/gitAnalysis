@@ -62,7 +62,6 @@ class App extends Component {
   }
 
   buildBarChart(chartLanguage) {
-    console.log("chartLang : ", chartLanguage);
     var tempLanguageData = [];
     if (this.state.isAppend) {
       tempLanguageData = this.state.languageData;
@@ -75,8 +74,6 @@ class App extends Component {
         }
       }
     }
-    console.log("mainnn chartlang : ", chartLanguage);
-    console.log("mainnn langdata : ", this.state.languageData);
     this.setState({ languageData: chartLanguage });
     var tempChartLanguage = [];
     for (var keys in chartLanguage) {
@@ -84,25 +81,20 @@ class App extends Component {
       temp[keys] = chartLanguage[keys];
       tempChartLanguage.push(temp);
     }
-    console.log("tempChartLang : ", tempChartLanguage);
     var createdChartData = [];
-    console.log("createdchartdata : ", createdChartData);
     createdChartData.push(tempChartLanguage);
     createdChartData = createdChartData[0];
     var sortedChartData = Actions.sortArrayWithSecondValue(createdChartData);
-    console.log("sorteddata : ", sortedChartData);
     var limit = Math.min(sortedChartData.length, 6);
     var displayData = [];
     for (var i = 1; i < limit; i++) {
       displayData.push(sortedChartData[i]);
     }
-    console.log(displayData);
 
     this.setState({ barChartData: displayData });
 
   }
   successCB(response) {
-    //console.log(response);
     if (!response.data.items.length) {
       this.setState({ noContent: true });
       if (!this.state.isAppend) {
@@ -134,9 +126,6 @@ class App extends Component {
         chartLanguage[tempData.language] = 1;
       }
     }
-
-
-    console.log(chartLanguage);
     this.buildBarChart(chartLanguage);
     this.addCards(data);
   }

@@ -24,7 +24,6 @@ const Actions = {
     },
 
     sortArrayWithSecondValue(data) {
-        console.log("sort incom : ", data);
         var keys = [], value = [];
         for (var key in data) {
             for (var i in data[key]) {
@@ -32,15 +31,11 @@ const Actions = {
                 value.push(data[key][i]);
             }
         }
-        console.log("sort keys : ", keys);
-        console.log("sort value : ", value);
         var sortedData = this.bubbleSort(keys, value);
         return sortedData;
     },
 
     bubbleSort(key, items) {
-        console.log("income sort keys : ", key);
-        console.log("income sort values : ", items);
         var length = items.length;
         for (var i = (length - 1); i >= 0; i--) {
             //Number of passes
@@ -57,14 +52,11 @@ const Actions = {
                 }
             }
         }
-        console.log("after sort keys : ", key);
-        console.log("after sort values : ", items);
         var returnData = [{}];
         for (var i = 0; i < items.length; i++) {
             var temp = { 'text': key[i], 'value': items[i] };
             returnData.push(temp);
         }
-        console.log("return data : ", returnData);
         return returnData;
     }
 }
