@@ -38,12 +38,12 @@ class App extends Component {
     }
   }
   setSearch() {
-    this.setState({ toSearch: this.refs.searchKeyword.value }, function () {
-      this.setState({ pageNumber: 1 }, function () {
-        this.setState({ isAppend: false }, function () {
-          this.searchRepo();
-        });
-      });
+    this.setState({
+      toSearch: this.refs.searchKeyword.value,
+      pageNumber: 1,
+      isAppend: false
+    }, function () {
+      this.searchRepo();
     });
   }
 
@@ -148,12 +148,12 @@ class App extends Component {
   }
 
   sortValueChange() {
-    this.setState({ sortValue: this.refs.sortValue.value }, function () {
-      this.setState({ pageNumber: 1 }, function () {
-        this.setState({ isAppend: false }, function () {
-          this.searchRepo();
-        });
-      });
+    this.setState({
+      sortValue: this.refs.sortValue.value,
+      pageNumber: 1,
+      isAppend: false
+    }, function () {
+      this.searchRepo();
     });
   }
 
@@ -166,10 +166,11 @@ class App extends Component {
       var scrollValues = Actions.getDocumentScrollValues();
       if (scrollValues.windowBottom >= scrollValues.docHeight) {
         var nextPageNumber = this.state.pageNumber + 1;
-        this.setState({ pageNumber: nextPageNumber }, function () {
-          this.setState({ isAppend: true }, function () {
-            this.searchRepo();
-          });
+        this.setState({
+          pageNumber: nextPageNumber,
+          isAppend: true
+        }, function () {
+          this.searchRepo();
         });
       }
     }.bind(this);

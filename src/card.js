@@ -5,9 +5,6 @@ import './App.css';
 class Card extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
     }
 
 
